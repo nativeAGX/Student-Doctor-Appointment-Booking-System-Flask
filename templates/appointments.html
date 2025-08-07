@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booked Appointments</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <div class="logo">Zeus' Healing Ledger</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('profile') }}">Profile</a></li>
+            <li><a href="{{ url_for('booking') }}">Book Appointment</a></li>
+            <li><a href="{{ url_for('appointments') }}">Booked Appointments</a></li>
+        </ul>
+    </nav>
+
+    <!-- Appointments Section -->
+    <div class="container">
+        <section id="appointments" aria-labelledby="appointmentsHeading">
+            <h2 id="appointmentsHeading">Your Booked Appointments</h2>
+            <div id="appointmentList">
+                <!-- Appointments will be displayed here -->
+                <p>Loading appointments...</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/appointments.js') }}"></script>
+</body>
+</html>

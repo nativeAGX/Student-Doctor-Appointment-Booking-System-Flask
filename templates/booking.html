@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Booking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <div class="logo">Zeus' Healing Ledger</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('profile') }}">Profile</a></li>
+            <li><a href="{{ url_for('booking') }}">Book Appointment</a></li>
+            <li><a href="{{ url_for('appointments') }}">Booked Appointments</a></li>
+        </ul>
+    </nav>
+
+    <!-- Appointment Booking Section -->
+    <div class="container">
+        <section id="appointment" aria-labelledby="appointmentHeading">
+            <h2 id="appointmentHeading">Book an Appointment</h2>
+
+            <div class="input-group">
+                <label for="doctor">Select Doctor:</label>
+                <select id="doctor" name="doctor" aria-required="true" required>
+                    <option value="" disabled selected>Select a doctor</option>
+                    {% for doctor in doctors %}
+                        <option value="{{ doctor }}">{{ doctor }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="appointmentDate">Select Appointment Date:</label>
+                <input type="date" id="appointmentDate" name="appointmentDate" required aria-required="true">
+            </div>
+
+            <div id="calendar">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time Slot</th>
+                            <th>Doctor Availability</th>
+                        </tr>
+                    </thead>
+                    <tbody id="timeSlots">
+                        <!-- Time slots will be dynamically generated here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/booking.js') }}"></script>
+</body>
+</html>
